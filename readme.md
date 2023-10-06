@@ -118,6 +118,8 @@ I just configured the above to happen every time I connected.
 `DISPLAY=:0` makes it so that you can do stuff like `xdg-open .` and `emacs &`
 and `git gui &` in the terminal, and see the result in your main gui session.
 
+![ConnectBot settings](./pics/settings.png)
+
 ##### install and run my typing programme
 
 Don't actually do this.
