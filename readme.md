@@ -2,7 +2,7 @@
 
 (as long as you want to use it as a terminal)
 
-![Kindle Fire as Extra Screen](picture.jpeg)
+![Kindle Fire as Extra Screen](pics/picture.jpeg)
 
 I have a couple old kindle fire tablets lying around. One of them has a battery
 that lasts about ten minutes. I also never have enough screens and never know
@@ -24,7 +24,7 @@ Well I just ssh into my computer from an android SSH client, open `screen`, and
 then use a program I made that allows me to `stuff` the characters I type into
 the screen session, so it feels like I am typing right into the tablet.
 
-![typing app](./terminal-app.png)
+![typing app](pics/terminal-app.png)
 
 See if you can find this little window in the main picture. That is what I have
 to activate using Alt+Tab to type into the terminal.
