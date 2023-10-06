@@ -174,8 +174,10 @@ after characters get stuffed in
 * the wifi network at home is too slow
 * trying to use it as a full text editor for serious work makes the speed more
 noticeable
-(I have used emacs at the office set-up, in the picture, and it seems to work
-pretty well, but it's too small to really try to work with it)
+(I have used emacs at the office set-up in the picture, and it seems to work
+pretty well, but it's too small to really try to work with it - I am also
+thinking using emacs to display my email inbox with it so I can keep an eye on
+my email while I work)
 
 I am planning to mainly use it at the office to tail logs, but I have been
 'daily driving' it for all terminal stuff just to try it out.
