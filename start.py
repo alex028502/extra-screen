@@ -57,6 +57,9 @@ def interpret(event):
     if event.state & Gdk.ModifierType.MOD1_MASK:
         return "\x1b" + event.string
 
+    if event.string == "\\":
+        return "\\\\"
+
     return event.string
 
 
