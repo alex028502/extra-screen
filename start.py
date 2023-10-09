@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import os
+import tempfile
 
 import gi
 
@@ -86,9 +87,17 @@ def key_press_event(widget, event):
             # from man screen
             # > You cannot paste large buffers with the stuff command. It is
             # most useful for key bindings.
-            # but so far it has worked OK. I use the paste command for C-SPC
-            # so could replace this if it becomes a problem
-            subprocess.run(["screen", "-S", session_name, "-X", "stuff", clip_text])
+            # but actually it worked pretty well - the problem that made me
+            # stop using stuff here is that screen seems to expand whatever you
+            # give it as if it were in single quotes and I couldn't figure out
+            # a way to escape it to exactly that level
+            with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+                tmp_file.write(clip_text.encode())
+            subprocess.run(
+                ["screen", "-S", session_name, "-X", "readbuf", tmp_file.name]
+            )
+            subprocess.run(["screen", "-S", session_name, "-X", "paste", "."])
+            os.unlink(tmp_file.name)
         return
 
     # this case is so special it doesn't even fit into special cases
