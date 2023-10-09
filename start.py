@@ -6,7 +6,7 @@ import tempfile
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, GdkPixbuf
+from gi.repository import Gtk, Gdk, GdkPixbuf, Gio
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 
@@ -62,6 +62,17 @@ def interpret(event):
         return "\\\\"
 
     return event.string
+
+
+def on_drag_data_received(widget, drag_context, x, y, data, info, time):
+    uris = data.get_uris()
+    if uris:
+        for uri in uris:
+            debug("uri %s" % uri)
+            file = Gio.File.new_for_uri(uri)
+            file_path = file.get_path()
+            debug("file path: " + file_path)
+            subprocess.run(["screen", "-S", session_name, "-X", "stuff", file_path])
 
 
 def key_press_event(widget, event):
@@ -133,5 +144,8 @@ win.add(image)
 win.set_title("\U0001F4BB")
 win.connect("key-press-event", key_press_event)
 win.set_icon_from_file("./icon.png")
+win.drag_dest_set(Gtk.DestDefaults.ALL, [], Gdk.DragAction.COPY)
+win.drag_dest_add_uri_targets()
+win.connect("drag-data-received", on_drag_data_received)
 win.show_all()
 Gtk.main()
