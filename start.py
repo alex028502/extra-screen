@@ -61,6 +61,9 @@ def interpret(event):
     if event.string == "\\":
         return "\\\\"
 
+    if event.string == "^":
+        return "\\^"
+
     return event.string
 
 
